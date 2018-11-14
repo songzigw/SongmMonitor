@@ -31,6 +31,11 @@
            <groupId>cn.songm.common</groupId>
            <artifactId>songm-common-web</artifactId>
        </dependency>
+       
+       <dependency>
+           <groupId>cn.songm.monitor</groupId>
+           <artifactId>songm-monitor-service</artifactId>
+       </dependency>
     </dependencies>
 </project>
 
