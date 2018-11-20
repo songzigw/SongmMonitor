@@ -30,7 +30,7 @@ for i in "$APP_HOME"/lib/*.jar; do
 done
  
 #java虚拟机启动参数
-JAVA_OPTS="-ms512m -mx512m -Xmn256m -Djava.awt.headless=true -XX:MaxPermSize=128m"
+JAVA_OPTS="-ms512m -mx512m -Xmn256m -XX:MaxPermSize=128m -Djava.awt.headless=true"
  
 ###################################
 #(函数)判断程序是否已启动

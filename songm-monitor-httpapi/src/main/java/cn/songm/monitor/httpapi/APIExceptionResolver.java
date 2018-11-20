@@ -24,7 +24,7 @@ public abstract class APIExceptionResolver implements HandlerExceptionResolver {
     
     private JmsTemplate jmsTemplate;
     
-    public void setJmsTemplate(JmsTemplate jmsTemplate) {
+    public APIExceptionResolver(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
     }
     
