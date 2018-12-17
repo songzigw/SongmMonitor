@@ -3,13 +3,14 @@ package cn.songm.monitor.domain;
 import java.util.Date;
 
 import cn.songm.common.beans.EntityAdapter;
+import cn.songm.monitor.mbean.ErrInfoMBean;
 
 /**
  * 错误消息
  * @author zhangsong
  *
  */
-public class ErrInfo extends EntityAdapter {
+public class ErrInfo extends EntityAdapter implements ErrInfoMBean {
 
     private static final long serialVersionUID = -3903085495197748293L;
 

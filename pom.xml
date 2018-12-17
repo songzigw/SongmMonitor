@@ -7,6 +7,19 @@
   <version>1.0</version>
   <packaging>pom</packaging>
 
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Nexus Release Repository</name>
+      <url>http://192.168.3.141:8081/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Nexus Snapshot Repository</name>
+      <url>http://192.168.3.141:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <properties>
     <file.encoding>UTF-8</file.encoding>
     <project.build.sourceEncoding>${file.encoding}</project.build.sourceEncoding>
@@ -128,31 +141,6 @@
           </execution>
         </executions>
       </plugin>
-
-      <!-- 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.3</version>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <configuration>
-              <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
-              <outputDirectory>
-                ${project.build.directory}/lib
-              </outputDirectory>
-            </configuration>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-       -->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
