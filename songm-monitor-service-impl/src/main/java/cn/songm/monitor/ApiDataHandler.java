@@ -1,4 +1,4 @@
-package cn.songm.monitor.service;
+package cn.songm.monitor;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -14,28 +14,25 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.stereotype.Component;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import cn.songm.monitor.domain.ReqInfo;
+import cn.songm.common.utils.JsonUtils;
+import cn.songm.monitor.domain.ApiData;
 
 /**
  * 请求消息的处理
  * @author zhangsong
  *
  */
-@Component("reqInfoHandler")
-public class ReqInfoHandler  extends DefaultMessageListenerContainer implements MessageListener {
+@Component("apiDataHandler")
+public class ApiDataHandler  extends DefaultMessageListenerContainer implements MessageListener {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    public ReqInfoHandler(ConnectionFactory connectionFactory,
-            @Value("${jms.queue.req}") String queueReq) {
+    public ApiDataHandler(ConnectionFactory connectionFactory,
+            @Value("${jms.queue.apidata}") String queueApiData) {
         super.setConnectionFactory(connectionFactory);
-        super.setDestination(new ActiveMQQueue(queueReq));
+        super.setDestination(new ActiveMQQueue(queueApiData));
         super.setMessageListener(this);
-        System.out.println("======="+queueReq);
     }
     
     @Override
@@ -43,10 +40,8 @@ public class ReqInfoHandler  extends DefaultMessageListenerContainer implements 
         ActiveMQTextMessage msg = (ActiveMQTextMessage) message;
         try {
             String ms = msg.getText();
-            log.info("Receive ReqInfo: {}", ms);
-            JsonObject jObj = new JsonParser().parse(ms).getAsJsonObject();
-            ReqInfo req = new ReqInfo();
-            req.setClientIp(jObj.get("clientIp").getAsString());
+            ApiData apidata = JsonUtils.getInstance().fromJson(ms, ApiData.class);
+            log.info(apidata.toString());
         } catch (JMSException e) {
             log.error(e.getMessage(), e);
         }

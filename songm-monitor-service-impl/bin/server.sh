@@ -109,7 +109,7 @@ fi
 #fi
 
 #需要启动的Java主程序（main方法类）
-APP_MAINCLASS=cn.songm.monitor.service.AppAcceptor
+APP_MAINCLASS=cn.songm.monitor.AppAcceptor
 
 
 ###################################

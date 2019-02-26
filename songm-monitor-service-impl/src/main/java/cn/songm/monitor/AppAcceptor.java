@@ -41,6 +41,6 @@ public class AppAcceptor {
 //        long k = Runtime.getRuntime().maxMemory()/1024/1024;
 //        System.out.println("最大可用内存量:" + k + "Mb");
         
-        //AppBoot.start("app-monitor.xml", args);
+        AppBoot.start("app-monitor.xml", args);
     }
 }
